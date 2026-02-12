@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Penebak Cuaca & Sakit 🌸</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pink Soft Checker 🌸</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="card">
-    <h1>✨ Penebak Cuaca & Sakit ✨</h1>
 
-    <!-- Penebak Cuaca -->
-    <div class="section">
-      <h2>☁️ Tebak Cuaca</h2>
-      <input type="text" id="cityInput" placeholder="Masukkan nama kota...">
-      <button onclick="guessWeather()">Cek Cuaca</button>
-      <p id="weatherOutput"></p>
-    </div>
+<!-- LOGIN -->
+<div class="card" id="loginPage">
+  <h1>🌸 Selamat Datang 🌸</h1>
+  <p>Masuk dulu yaa ✨</p>
+  <input type="text" id="username" placeholder="Masukkan nama kamu"/>
+  <button onclick="login()">Masuk</button>
+</div>
 
-    <!-- Penebak Sakit -->
-    <div class="section">
-      <h2>🤒 Tebak Sakit</h2>
-      <input type="text" id="symptomInput" placeholder="Masukkan gejala (mis. batuk)">
-      <button onclick="guessIllness()">Tebak</button>
-      <p id="illnessOutput"></p>
-    </div>
-  </div>
+<!-- MENU -->
+<div class="card hidden" id="menuPage">
+  <h1 id="welcomeText"></h1>
+  <h2>Pilih mau apa 💖</h2>
+  <button onclick="showWeather()">☁️ Cek Cuaca Asli</button>
+  <button onclick="showHealth()">🤒 Cek Kesehatan</button>
+</div>
 
-  <script src="script.js"></script>
+<!-- CUACA -->
+<div class="card hidden" id="weatherPage">
+  <h2>☁️ Cek Cuaca Asli</h2>
+  <input type="text" id="city" placeholder="Masukkan kota"/>
+  <button onclick="checkWeather()">Lihat Cuaca</button>
+  <div class="result" id="weatherResult"></div>
+  <button onclick="backMenu()">⬅ Kembali</button>
+</div>
+
+<!-- KESEHATAN -->
+<div class="card hidden" id="healthPage">
+  <h2>🤒 Cek Kesehatan</h2>
+  <input type="text" id="nama" placeholder="Nama kamu"/>
+  <input type="text" id="kota" placeholder="Asal kota"/>
+  <textarea id="gejala" placeholder="Ceritakan sakit kamu..."></textarea>
+  <button onclick="checkHealth()">Cek Sekarang</button>
+  <div class="result" id="healthResult"></div>
+  <button onclick="backMenu()">⬅ Kembali</button>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
