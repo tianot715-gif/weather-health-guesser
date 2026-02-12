@@ -1,4 +1,4 @@
-const API_KEY = "GANTI_API_KEY_KAMU"; // ambil gratis di openweathermap.org
+ const API_KEY = "APIKEY_KAMU_YANG_ASLI"; 
 
 function login() {
   const user = document.getElementById('username').value.trim();
