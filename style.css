@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #ffe4ec, #ffd6e8);
   display: flex;
   justify-content: center;
@@ -10,40 +10,45 @@ body {
 
 .card {
   background: #fff0f6;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   width: 90%;
-  max-width: 400px;
+  max-width: 420px;
   text-align: center;
 }
 
-h1, h2 {
-  color: #d63384;
-}
+h1, h2 { color: #d63384; }
 
-input {
-  width: 80%;
-  padding: 8px;
-  margin: 10px 0;
+input, textarea {
+  width: 90%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
   border: 2px solid #f8c0d8;
-  border-radius: 8px;
+  outline: none;
 }
 
 button {
-  padding: 8px 15px;
+  margin-top: 10px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 12px;
   background: #ff85c0;
   color: white;
-  border: none;
-  border-radius: 8px;
   cursor: pointer;
+  font-weight: bold;
 }
 
-button:hover {
-  background: #ff63a5;
-}
+button:hover { background: #ff63a5; }
 
-p {
-  font-size: 1rem;
+.hidden { display: none; }
+
+.result {
+  margin-top: 15px;
+  background: #ffe3f1;
+  padding: 12px;
+  border-radius: 12px;
   color: #6a006a;
+  line-height: 1.5;
 }
