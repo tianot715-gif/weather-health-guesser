@@ -11,20 +11,17 @@
 <!-- LOGIN -->
 <div class="card" id="loginPage">
   <h1>🌸 Selamat Datang 🌸</h1>
-  <p>Masuk dulu yaa ✨</p>
+  <p>Isi nama bebas lalu tekan masuk ✨</p>
 
-  <input type="text" id="username" placeholder="Masukkan nama kamu"/>
-  <input type="password" id="password" placeholder="Masukkan password"/>
-
+  <input type="text" id="username" placeholder="Nama kamu"/>
   <button onclick="login()">Masuk</button>
-  <p id="loginError" class="error"></p>
 </div>
 
 <!-- MENU -->
 <div class="card hidden" id="menuPage">
   <h1 id="welcomeText"></h1>
-  <h2>Pilih mau apa 💖</h2>
-  <button onclick="showWeather()">☁️ Cek Cuaca Asli</button>
+  <h2>Pilih menu 💖</h2>
+  <button onclick="showWeather()">☁️ Cek Cuaca</button>
   <button onclick="showHealth()">🤒 Cek Kesehatan</button>
 </div>
 
@@ -35,6 +32,22 @@
   <button onclick="checkWeather()">Lihat Cuaca</button>
   <div class="result" id="weatherResult"></div>
   <button onclick="backMenu()">⬅ Kembali</button>
+</div>
+
+<!-- KESEHATAN -->
+<div class="card hidden" id="healthPage">
+  <h2>🤒 Cek Kesehatan</h2>
+  <input type="text" id="nama" placeholder="Nama kamu"/>
+  <input type="text" id="kota" placeholder="Asal kota"/>
+  <textarea id="gejala" placeholder="Tulis gejala kamu..."></textarea>
+  <button onclick="checkHealth()">Cek Sekarang</button>
+  <div class="result" id="healthResult"></div>
+  <button onclick="backMenu()">⬅ Kembali</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>  <button onclick="backMenu()">⬅ Kembali</button>
 </div>
 
 <!-- KESEHATAN -->
