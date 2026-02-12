@@ -1,5 +1,3 @@
- const API_KEY = "APIKEY_KAMU_YANG_ASLI"; 
-
 function login() {
   const user = document.getElementById('username').value.trim();
   if (!user) return alert('Isi nama dulu yaa 😊');
@@ -17,6 +15,7 @@ function showPage(id) {
   document.getElementById(id).classList.remove('hidden');
 }
 
+// ===== CUACA ASLI TANPA API KEY (Open-Meteo) =====
 async function checkWeather() {
   const city = document.getElementById('city').value.trim();
   const result = document.getElementById('weatherResult');
@@ -27,29 +26,34 @@ async function checkWeather() {
   }
 
   try {
-    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=id&appid=${API_KEY}`);
-    const data = await res.json();
+    const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`);
+    const geoData = await geoRes.json();
 
-    if (data.cod !== 200) {
+    if (!geoData.results) {
       result.innerText = 'Kota tidak ditemukan 😢';
       return;
     }
 
-    const cuaca = data.weather[0].description;
-    const suhu = data.main.temp;
-    const terasa = data.main.feels_like;
-    const kelembapan = data.main.humidity;
+    const { latitude, longitude, name, country } = geoData.results[0];
 
-    let alasan = "Cuaca dipengaruhi kondisi atmosfer dan suhu udara.";
+    const weatherRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
+    const weatherData = await weatherRes.json();
 
-    if (cuaca.includes("hujan")) alasan = "Karena awan tebal membawa banyak uap air yang turun jadi hujan.";
-    if (cuaca.includes("cerah")) alasan = "Karena sinar matahari tidak tertutup awan.";
+    const suhu = weatherData.current_weather.temperature;
+    const angin = weatherData.current_weather.windspeed;
+    const kode = weatherData.current_weather.weathercode;
+
+    let cuaca = 'Cerah 🌞';
+    if ([1,2,3].includes(kode)) cuaca = 'Berawan ☁️';
+    if ([45,48].includes(kode)) cuaca = 'Berkabut 🌫️';
+    if ([51,53,55,61,63,65,80,81,82].includes(kode)) cuaca = 'Hujan 🌧️';
+    if ([71,73,75].includes(kode)) cuaca = 'Salju ❄️';
 
     result.innerHTML = `
-      <b>${cuaca.toUpperCase()} 🌸</b><br>
-      Suhu: ${suhu}°C (terasa ${terasa}°C)<br>
-      Kelembapan: ${kelembapan}%<br><br>
-      Penjelasan: ${alasan}
+      <b>${cuaca}</b><br>
+      Lokasi: ${name}, ${country}<br>
+      Suhu: ${suhu}°C<br>
+      Kecepatan angin: ${angin} km/jam
     `;
 
   } catch (err) {
@@ -57,12 +61,39 @@ async function checkWeather() {
   }
 }
 
+// ===== CEK KESEHATAN (HIBURAN) =====
 function checkHealth() {
   const nama = document.getElementById('nama').value.trim();
   const kota = document.getElementById('kota').value.trim();
   const gejala = document.getElementById('gejala').value.toLowerCase();
   const result = document.getElementById('healthResult');
 
+  if (!nama || !kota || !gejala) {
+    result.innerText = 'Isi semua dulu yaa 💕';
+    return;
+  }
+
+  let sakit = 'Kurang istirahat 😴';
+  let obat = 'Tidur cukup, minum air putih, dan makan teratur.';
+
+  if (gejala.includes('batuk')) {
+    sakit = 'Batuk ringan 🤧';
+    obat = 'Minum air hangat, madu, dan istirahat cukup.';
+  }
+  if (gejala.includes('demam')) {
+    sakit = 'Demam ringan 🌡️';
+    obat = 'Perbanyak minum, kompres hangat, dan istirahat.';
+  }
+  if (gejala.includes('pusing')) {
+    sakit = 'Pusing karena lelah 💫';
+    obat = 'Tidur cukup dan kurangi lihat layar.';
+  }
+
+  result.innerHTML = `Halo <b>${nama}</b> dari ${kota} 💖<br>
+  Kemungkinan kamu mengalami: <b>${sakit}</b><br>
+  Saran: ${obat}<br><br>
+  <i>Ini hanya hiburan ya, bukan diagnosis dokter 🌸</i>`;
+}
   if (!nama || !kota || !gejala) {
     result.innerText = 'Isi semua dulu yaa 💕';
     return;
