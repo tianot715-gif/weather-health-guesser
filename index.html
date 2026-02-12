@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penebak Cuaca & Sakit 🌸</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>✨ Penebak Cuaca & Sakit ✨</h1>
+
+    <!-- Penebak Cuaca -->
+    <div class="section">
+      <h2>☁️ Tebak Cuaca</h2>
+      <input type="text" id="cityInput" placeholder="Masukkan nama kota...">
+      <button onclick="guessWeather()">Cek Cuaca</button>
+      <p id="weatherOutput"></p>
+    </div>
+
+    <!-- Penebak Sakit -->
+    <div class="section">
+      <h2>🤒 Tebak Sakit</h2>
+      <input type="text" id="symptomInput" placeholder="Masukkan gejala (mis. batuk)">
+      <button onclick="guessIllness()">Tebak</button>
+      <p id="illnessOutput"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
