@@ -52,3 +52,25 @@ button:hover { background: #ff63a5; }
   color: #6a006a;
   line-height: 1.5;
 }
+
+.error {
+  color: red;
+  margin-top: 8px;
+}  background: #ff85c0;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover { background: #ff63a5; }
+
+.hidden { display: none; }
+
+.result {
+  margin-top: 15px;
+  background: #ffe3f1;
+  padding: 12px;
+  border-radius: 12px;
+  color: #6a006a;
+  line-height: 1.5;
+}
