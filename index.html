@@ -12,8 +12,12 @@
 <div class="card" id="loginPage">
   <h1>🌸 Selamat Datang 🌸</h1>
   <p>Masuk dulu yaa ✨</p>
+
   <input type="text" id="username" placeholder="Masukkan nama kamu"/>
+  <input type="password" id="password" placeholder="Masukkan password"/>
+
   <button onclick="login()">Masuk</button>
+  <p id="loginError" class="error"></p>
 </div>
 
 <!-- MENU -->
@@ -35,6 +39,18 @@
 
 <!-- KESEHATAN -->
 <div class="card hidden" id="healthPage">
+  <h2>🤒 Cek Kesehatan</h2>
+  <input type="text" id="nama" placeholder="Nama kamu"/>
+  <input type="text" id="kota" placeholder="Asal kota"/>
+  <textarea id="gejala" placeholder="Ceritakan sakit kamu..."></textarea>
+  <button onclick="checkHealth()">Cek Sekarang</button>
+  <div class="result" id="healthResult"></div>
+  <button onclick="backMenu()">⬅ Kembali</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html><div class="card hidden" id="healthPage">
   <h2>🤒 Cek Kesehatan</h2>
   <input type="text" id="nama" placeholder="Nama kamu"/>
   <input type="text" id="kota" placeholder="Asal kota"/>
